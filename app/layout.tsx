@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { MetaMaskUIProvider } from '@metamask/sdk-react-ui';
+import SDKContainer from "@/components/SDKContainer";
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,8 +18,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="dark" suppressHydrationWarning={true}>
+      <body className={inter.className}>
+          <SDKContainer>
+              {children}
+          </SDKContainer>
+      </body>
     </html>
   )
 }
